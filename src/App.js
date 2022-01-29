@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { Title, Layout, Flex } from './atoms';
+import { Card } from './molecules';
+
+import API from './api';
+
+const Resource = ({ resource }) => (
+  <Layout flex={1} maxWidth="400px">
+    <Card title={resource.titulo} description={resource.descricao} image={resource.imagem} />
+  </Layout>
+)
+
+const ResourceList = ({ resources }) => (
+    <Flex flexDirection="row" flexWrap='wrap'>
+      {resources.length > 0 
+        ? resources.map(resource => (
+          <Resource resource={resource} />
+        )) 
+        : "carregando"}
+    </Flex>
+)
 
 function App() {
+
+  const [resources, setResource] = useState([])
+
+  useEffect(() => {
+    async function fetchData() {
+      const resources = await API.getAllResources()
+      setResource(resources)
+    }
+    fetchData();
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <Layout>
+        <Title>Lista de recursos</Title>
+        <ResourceList resources={resources} />
+      </Layout>
+  )
 }
 
 export default App;
