@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Title, Layout, Center } from 'atoms';
-import { Resources } from 'organisms';
+import { Resources, Courses } from 'organisms';
 
 import API from 'api';
 
 const Home = () => {
     const [resources, setResource] = useState([])
+    const [courses, setCourses] = useState([])
 
     useEffect(() => {
       async function fetchData() {
@@ -15,11 +16,20 @@ const Home = () => {
       fetchData();
     }, [])
 
+    useEffect(() => {
+      async function fetchData() {
+        const courses = await API.getAllResources()
+        setCourses(courses)
+      }
+      fetchData();
+    }, [])
+
     return (
         <Center width="1500px">
           <Layout>
-            <Title>Lista de recursos</Title>
+            <Title>Home</Title>
             <Resources resources={resources} />
+            <Courses courses={courses} />
           </Layout>
         </Center>
     )

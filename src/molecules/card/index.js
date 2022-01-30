@@ -1,5 +1,6 @@
 import React from "react";
 import { Layout } from "../../atoms";
+import { Link } from "react-router-dom";
 
 const Card = ({ title, image, description, link }) => (
     <Layout className="card">
@@ -7,7 +8,7 @@ const Card = ({ title, image, description, link }) => (
         <Layout className="card-body">
             <h5 className="card-title">{title}</h5>
             <p className="card-text">{description}</p>
-            <a href={link} className="btn btn-primary">Ver esse recurso</a>
+            <Link to={link} className="btn btn-primary">Ver esse recurso</Link>
         </Layout>
     </Layout>
 )

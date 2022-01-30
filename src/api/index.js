@@ -15,6 +15,15 @@ class Api {
             console.error(e)
           }
     }
+
+    async getAllCourses() {
+      try {
+          const response = await axios.get(`${this.host}:${this.port}/api/v1/curso/`)
+          return response.data
+        } catch (e) {
+          console.error(e)
+        }
+  }
 }
 
 const API = new Api("http://localhost", "8080") 
