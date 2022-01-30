@@ -23,7 +23,16 @@ class Api {
         } catch (e) {
           console.error(e)
         }
-  }
+    }
+
+    async getAllEvents() {
+      try {
+          const response = await axios.get(`${this.host}:${this.port}/api/v1/evento`)
+          return response.data
+        } catch (e) {
+          console.error(e)
+        }
+    }
 }
 
 const API = new Api("http://localhost", "8080") 
