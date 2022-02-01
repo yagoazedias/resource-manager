@@ -2,19 +2,19 @@ import React from 'react';
 import { Layout, Flex, Subtitle } from 'atoms';
 import { Card } from 'molecules';
 
-const Resource = ({ resource }) => (
+const Resource = ({ id, resource, deleteResource }) => (
     <Layout mr="10px" mt="10px" maxWidth="400px">
-        <Card title={resource.titulo} description={resource.descricao} image={resource.imagem} link={`/recurso/${resource.id}`} />
+        <Card onClick={() => { deleteResource(id) }} title={resource.titulo} description={resource.descricao} image={resource.imagem} link={`/recurso/${resource.id}`} />
     </Layout>
 )
 
-const Resources = ({ resources }) => (
+const Resources = ({ resources, deleteResource }) => (
     <Layout>
         <Subtitle>Listagem de recursos</Subtitle>
         <Flex flexDirection="row" flexWrap='wrap' alignItems='start'>
         {resources.length > 0 
             ? resources.map(resource => (
-            <Resource resource={resource} />
+            <Resource id={resource.id} resource={resource} deleteResource={deleteResource} />
             ))  
             : "carregando"}
         </Flex>

@@ -33,6 +33,15 @@ class Api {
           console.error(e)
         }
     }
+
+    async deleteResource(id) {
+      try {
+        const response = await axios.delete(`${this.host}:${this.port}/api/v1/recurso/${id}`)
+        return response
+      } catch (e) {
+        console.error(e)
+      }
+    }
 }
 
 const API = new Api("http://localhost", "8080") 

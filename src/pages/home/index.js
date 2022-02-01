@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Title, Layout, Center } from 'atoms';
-import { Resources, Courses, Events } from 'organisms';
+import { Resources, Courses, Events, Navbar } from 'organisms';
 
 import API from 'api';
 
@@ -35,8 +35,8 @@ const Home = () => {
 
     return (
         <Center width="1500px">
+          <Navbar />
           <Layout>
-            <Title>Home</Title>
             <Resources resources={resources} />
             <Courses courses={courses} />
             <Events events={events} />
