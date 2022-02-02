@@ -39,7 +39,6 @@ const Resource = () => {
   }
   
   const updateResourceByKey = (resource, key, value) => {
-
     if (key === "data_de_criacao" || key === "data_de_registro") {
       const newDate = new Date(value).toISOString()
       console.log(newDate)
@@ -52,6 +51,18 @@ const Resource = () => {
         ...resource,
         [key]: value,
       })
+    }
+  }
+
+  const updateResource = async (resource, id) => {
+    const response = await API.updateResource(resource, id);
+    console.log('response', response)
+    if (response.status == 200) {
+        alert("Recurso foi atualizado com sucesso");
+        window.location.reload();
+    } else {
+        console.log(response)
+        throw new Error("SQL error")
     }
   }
   
@@ -113,7 +124,7 @@ const Resource = () => {
           </Form.Group>
 
           <Form.Group className="mb-3">
-            <Button onClick={(e) => {e.preventDefault(); console.log(resource)} } disabled={!editable} variant="primary" type="submit">
+            <Button onClick={(e) => {e.preventDefault(); updateResource(resource, params.id)} } disabled={!editable} variant="primary" type="submit">
               Submit
             </Button>
           </Form.Group>

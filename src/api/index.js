@@ -52,6 +52,15 @@ class Api {
         console.error(e)
       }
     }
+
+    async updateResource(resource, id) {
+      try {
+        const response = await axios.put(`${this.host}:${this.port}/api/v1/recurso/${id}`, resource)
+        return response
+      } catch (e) {
+        console.error(e)
+      }
+    }
 }
 
 const API = new Api("http://localhost", "8080") 
