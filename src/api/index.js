@@ -16,6 +16,16 @@ class Api {
           }
     }
 
+    async getResourceById(id) {
+      try {
+          console.log(`${this.host}:${this.port}/api/v1/recurso/${id}`)
+          const response = await axios.get(`${this.host}:${this.port}/api/v1/recurso/${id}`)
+          return response.data
+        } catch (e) {
+          console.error(e)
+        }
+    }
+
     async getAllCourses() {
       try {
           const response = await axios.get(`${this.host}:${this.port}/api/v1/curso/`)

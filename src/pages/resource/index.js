@@ -1,40 +1,65 @@
 import React, { useEffect, useState } from 'react';
 import { Layout, Center } from 'atoms';
-import { Resources, Navbar } from 'organisms';
+import { Navbar } from 'organisms';
+import { Formik } from 'formik';
+import { Routes, Route, useParams } from "react-router-dom";
 
 import API from 'api';
 
-const deleteResource = async (id) => {
-  try {
-    const response = await API.deleteResource(id);
-    if (response.status == 200) {
-      alert("Recurso foi deletado com sucesso");
-      window.location.reload();
-    } else {
-      console.log(response)
-      throw new Error("SQL error")
-    }
-  } catch (e) {
-    alert(`Não foi possível deletar o recurso pois esse está relacionado a um autor existente`);
-  }
-}
-
 const Resource = () => {
-  const [resources, setResource] = useState([])
+  const [resource, setResource] = useState([])
+  const params = useParams();
 
   useEffect(() => {
     async function fetchData() {
-      const resources = await API.getAllResources()
-      setResource(resources)
+      const response = await API.getResourceById(params.id)
+      setResource(response)
     }
     fetchData();
   }, [])
+
+  const onSubmit = values => {
+    console.log(values)
+  }
   
   return (
       <Center width="1500px">
         <Navbar/>
         <Layout>
-          <Resources deleteResource={deleteResource} hasDeleteButton resources={resources} />
+        <Formik
+          onSubmit={onSubmit}
+          initialValues={{
+            titulo: "",
+            descricao: "",
+            data_de_criacao: "",
+            data_de_registro: "",
+            colecao_id: {
+                "id": 94,
+                titulo: "Os eventos do ano de 2026 nova"
+            }
+        }}
+        >
+          {({
+            values,
+            handleSubmit,
+          }) => (
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="text"
+                value={values.titulo}
+              />
+              <input
+                type="text"
+                name="text"
+                value={values.titulo}
+              />
+              <button type="submit">
+                Submit
+              </button>
+            </form>
+          )}
+        </Formik>
         </Layout>
       </Center>
   )

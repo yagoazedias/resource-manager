@@ -7,10 +7,11 @@ const MyNavbar = () => (
     <Navbar>
         <Container>
         <Nav className="me-auto">
-            <Navbar.Brand href="#home">Aplicações corporativas</Navbar.Brand>
-            <Layout mt='9px' mr='25px'><Navbar.Text><Link to="/resource">Recursos</Link></Navbar.Text></Layout>
-            <Layout mt='9px' mr='25px'><Navbar.Text><Link to="/courses">Cursos</Link></Navbar.Text></Layout>
-            <Layout mt='9px' mr='25px'><Navbar.Text><Link to="/collections">Coleções</Link></Navbar.Text></Layout>
+            <Navbar.Brand>Aplicações corporativas</Navbar.Brand>
+            <Layout mt='9px' mr='25px'><Navbar.Text><Link to="/">Home</Link></Navbar.Text></Layout>
+            <Layout mt='9px' mr='25px'><Navbar.Text><Link to="/recurso">Recursos</Link></Navbar.Text></Layout>
+            <Layout mt='9px' mr='25px'><Navbar.Text><Link to="/curso">Cursos</Link></Navbar.Text></Layout>
+            <Layout mt='9px' mr='25px'><Navbar.Text><Link to="/colecaoo">Coleções</Link></Navbar.Text></Layout>
         </Nav>
         </Container>
     </Navbar>
