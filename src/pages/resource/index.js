@@ -29,9 +29,7 @@ const Resource = () => {
   }
 
   const getDateInputFromIso = (isoformat) => {
-
     if(isoformat === "Carregando...") return "Carregando..."
-
     const date = new Date(isoformat);
     return date.toISOString().substring(0, 10);
   }
@@ -71,7 +69,13 @@ const Resource = () => {
             <Form.Control value={getDateInputFromIso(getAttributeBykey(resource, "data_de_registro"))} disabled={!editable} pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" rows={3} type="date"  />
           </Form.Group>
 
-          <Button variant="primary" type="submit">
+          <Form.Check 
+            type="checkbox"
+            label="Marque aqui para editar o recurso"
+            onChange={(e) => setEditable(e.target.checked)}
+          />
+
+          <Button disabled={!editable} variant="primary" type="submit">
             Submit
           </Button>
         </Form>
