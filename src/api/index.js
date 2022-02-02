@@ -35,6 +35,15 @@ class Api {
         }
     }
 
+    async deleteCourse(id) {
+      try {
+        const response = await axios.delete(`${this.host}:${this.port}/api/v1/curso/${id}`)
+        return response
+      } catch (e) {
+        console.error(e)
+      }
+    }
+
     async getAllEvents() {
       try {
           const response = await axios.get(`${this.host}:${this.port}/api/v1/evento`)

@@ -19,7 +19,7 @@ const Home = () => {
 
     useEffect(() => {
       async function fetchData() {
-        const courses = await API.getAllResources()
+        const courses = await API.getAllCourses()
         setCourses(courses)
       }
       fetchData();
