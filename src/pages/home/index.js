@@ -37,9 +37,15 @@ const Home = () => {
         <Center width="1500px">
           <Navbar />
           <Layout>
-            <Resources resources={resources} />
-            <Courses courses={courses} />
-            <Events events={events} />
+            <Layout mt="30px">
+              <Courses courses={courses} />
+            </Layout>
+            <Layout mt="30px">
+              <Events events={events} />
+            </Layout>
+            <Layout mt="30px">
+              <Resources resources={resources} />
+            </Layout>
           </Layout>
         </Center>
     )

@@ -39,6 +39,9 @@ const Resource = () => {
         <Navbar/>
         <Layout>
         <Form>
+          <Layout mt="40px">
+            <h5>Informações do recurso</h5>
+          </Layout>
           <Form.Group className="mb-3">
             <Form.Label>Titulo</Form.Label>
             <Form.Control value={getAttributeBykey(resource, "titulo")} disabled={!editable} type="email" />
@@ -75,9 +78,24 @@ const Resource = () => {
             onChange={(e) => setEditable(e.target.checked)}
           />
 
-          <Button disabled={!editable} variant="primary" type="submit">
-            Submit
-          </Button>
+          <Layout mt="40px">
+            <h5>Informações adicionais</h5>
+          </Layout>
+
+          <Form.Group className="mb-3">
+            <Form.Label>Palavras chaves:</Form.Label>
+            {resource.palavras_chaves ? resource.palavras_chaves.map(palavra => ` ${palavra},`) : "Carregando..."} 
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Label>Coleção: {`${resource.colecao_id ? resource.colecao_id.titulo : "Carregando..."}`}</Form.Label>
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Button disabled={!editable} variant="primary" type="submit">
+              Submit
+            </Button>
+          </Form.Group>
         </Form>
         </Layout>
       </Center>
