@@ -21,6 +21,10 @@ const Resource = () => {
     fetchData();
   }, [])
 
+  useEffect(() => {
+    console.log(resource)
+  }, [resource])
+
   const getAttributeBykey = (resource, key) => {
     if (resource[key]) {
       return resource[key]
@@ -34,6 +38,23 @@ const Resource = () => {
     return date.toISOString().substring(0, 10);
   }
   
+  const updateResourceByKey = (resource, key, value) => {
+
+    if (key === "data_de_criacao" || key === "data_de_registro") {
+      const newDate = new Date(value).toISOString()
+      console.log(newDate)
+      setResource({
+        ...resource,
+        [key]: newDate,
+      })
+    } else {
+      setResource({
+        ...resource,
+        [key]: value,
+      })
+    }
+  }
+  
   return (
       <Center width="1500px">
         <Navbar/>
@@ -44,32 +65,32 @@ const Resource = () => {
           </Layout>
           <Form.Group className="mb-3">
             <Form.Label>Titulo</Form.Label>
-            <Form.Control value={getAttributeBykey(resource, "titulo")} disabled={!editable} type="email" />
+            <Form.Control onChange={e => { updateResourceByKey(resource, "titulo", e.target.value)}} value={getAttributeBykey(resource, "titulo")} disabled={!editable} type="text" />
           </Form.Group>
 
           <Form.Group className="mb-3">
             <Form.Label>Descricao</Form.Label>
-            <Form.Control value={getAttributeBykey(resource, "descricao")} as="textarea" rows={3} disabled={!editable} type="text"  />
+            <Form.Control onChange={e => { updateResourceByKey(resource, "description", e.target.value)}} value={getAttributeBykey(resource, "descricao")} as="textarea" rows={3} disabled={!editable} type="text"  />
           </Form.Group>
 
           <Form.Group className="mb-3">
             <Form.Label>Link</Form.Label>
-            <Form.Control value={getAttributeBykey(resource, "link")} rows={3} disabled={!editable} type="text"  />
+            <Form.Control onChange={e => { updateResourceByKey(resource, "link", e.target.value)}} value={getAttributeBykey(resource, "link")} rows={3} disabled={!editable} type="text"  />
           </Form.Group>
 
           <Form.Group className="mb-3">
             <Form.Label>Imagem (link)</Form.Label>
-            <Form.Control value={getAttributeBykey(resource, "imagem")} rows={3} disabled={!editable} type="text"  />
+            <Form.Control onChange={e => { updateResourceByKey(resource, "imagem", e.target.value)}} value={getAttributeBykey(resource, "imagem")} rows={3} disabled={!editable} type="text"  />
           </Form.Group>
 
           <Form.Group className="mb-3">
             <Form.Label>Data de criação</Form.Label>
-            <Form.Control value={getDateInputFromIso(getAttributeBykey(resource, "data_de_criacao"))} disabled={!editable} pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" rows={3} type="date"  />
+            <Form.Control onChange={e => { updateResourceByKey(resource, "data_de_criacao", e.target.value)}} value={getDateInputFromIso(getAttributeBykey(resource, "data_de_criacao"))} disabled={!editable} pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" rows={3} type="date"  />
           </Form.Group>
 
           <Form.Group className="mb-3">
             <Form.Label>Data de registro</Form.Label>
-            <Form.Control value={getDateInputFromIso(getAttributeBykey(resource, "data_de_registro"))} disabled={!editable} pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" rows={3} type="date"  />
+            <Form.Control onChange={e => { updateResourceByKey(resource, "data_de_registro", e.target.value)}} value={getDateInputFromIso(getAttributeBykey(resource, "data_de_registro"))} disabled={!editable} pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" rows={3} type="date"  />
           </Form.Group>
 
           <Form.Check 
@@ -92,7 +113,7 @@ const Resource = () => {
           </Form.Group>
 
           <Form.Group className="mb-3">
-            <Button disabled={!editable} variant="primary" type="submit">
+            <Button onClick={(e) => {e.preventDefault(); console.log(resource)} } disabled={!editable} variant="primary" type="submit">
               Submit
             </Button>
           </Form.Group>
