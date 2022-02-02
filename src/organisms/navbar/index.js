@@ -11,7 +11,7 @@ const MyNavbar = () => (
             <Layout mt='9px' mr='25px'><Navbar.Text><Link to="/">Home</Link></Navbar.Text></Layout>
             <Layout mt='9px' mr='25px'><Navbar.Text><Link to="/recurso">Recursos</Link></Navbar.Text></Layout>
             <Layout mt='9px' mr='25px'><Navbar.Text><Link to="/curso">Cursos</Link></Navbar.Text></Layout>
-            <Layout mt='9px' mr='25px'><Navbar.Text><Link to="/colecaoo">Coleções</Link></Navbar.Text></Layout>
+            <Layout mt='9px' mr='25px'><Navbar.Text><Link to="/evento">Eventos</Link></Navbar.Text></Layout>
         </Nav>
         </Container>
     </Navbar>

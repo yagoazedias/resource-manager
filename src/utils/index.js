@@ -14,7 +14,10 @@ class Util {
     }
 
     updateResourceByKey = (resource, key, value, setState) => {
-        if (key === "data_de_criacao" || key === "data_de_registro") {
+        if (key === "data_de_criacao" 
+            || key === "data_de_registro" 
+            || key === "data_de_inicio" 
+            || key === "data_de_fim") {
             const newDate = new Date(value).toISOString()
             setState({
                 ...resource,

@@ -25,6 +25,15 @@ class Api {
         }
     }
 
+    async getEventById(id) {
+      try {
+          const response = await axios.get(`${this.host}:${this.port}/api/v1/evento/${id}`)
+          return response.data
+        } catch (e) {
+          console.error(e)
+        }
+    }
+
     async getAllCourses() {
       try {
           const response = await axios.get(`${this.host}:${this.port}/api/v1/curso/`)
@@ -91,6 +100,15 @@ class Api {
     async updateCourse(course, id) {
       try {
         const response = await axios.put(`${this.host}:${this.port}/api/v1/curso/${id}`, course)
+        return response
+      } catch (e) {
+        console.error(e)
+      }
+    }
+
+    async updateEvent(event, id) {
+      try {
+        const response = await axios.put(`${this.host}:${this.port}/api/v1/evento/${id}`, event)
         return response
       } catch (e) {
         console.error(e)
