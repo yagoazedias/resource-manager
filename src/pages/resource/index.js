@@ -16,14 +16,9 @@ const Resource = () => {
     async function fetchData() {
       const response = await API.getResourceById(params.id)
       setResource(response)
-      console.log(response.titulo)
     }
     fetchData();
   }, [])
-
-  useEffect(() => {
-    console.log(resource)
-  }, [resource])
 
   const getAttributeBykey = (resource, key) => {
     if (resource[key]) {
@@ -41,7 +36,6 @@ const Resource = () => {
   const updateResourceByKey = (resource, key, value) => {
     if (key === "data_de_criacao" || key === "data_de_registro") {
       const newDate = new Date(value).toISOString()
-      console.log(newDate)
       setResource({
         ...resource,
         [key]: newDate,
@@ -56,12 +50,10 @@ const Resource = () => {
 
   const updateResource = async (resource, id) => {
     const response = await API.updateResource(resource, id);
-    console.log('response', response)
     if (response.status == 200) {
         alert("Recurso foi atualizado com sucesso");
         window.location.reload();
     } else {
-        console.log(response)
         throw new Error("SQL error")
     }
   }

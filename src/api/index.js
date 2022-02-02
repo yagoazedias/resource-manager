@@ -18,7 +18,6 @@ class Api {
 
     async getResourceById(id) {
       try {
-          console.log(`${this.host}:${this.port}/api/v1/recurso/${id}`)
           const response = await axios.get(`${this.host}:${this.port}/api/v1/recurso/${id}`)
           return response.data
         } catch (e) {
@@ -29,6 +28,15 @@ class Api {
     async getAllCourses() {
       try {
           const response = await axios.get(`${this.host}:${this.port}/api/v1/curso/`)
+          return response.data
+        } catch (e) {
+          console.error(e)
+        }
+    }
+
+    async getCourseById(id) {
+      try {
+          const response = await axios.get(`${this.host}:${this.port}/api/v1/curso/${id}`)
           return response.data
         } catch (e) {
           console.error(e)
@@ -74,6 +82,15 @@ class Api {
     async updateResource(resource, id) {
       try {
         const response = await axios.put(`${this.host}:${this.port}/api/v1/recurso/${id}`, resource)
+        return response
+      } catch (e) {
+        console.error(e)
+      }
+    }
+
+    async updateCourse(course, id) {
+      try {
+        const response = await axios.put(`${this.host}:${this.port}/api/v1/curso/${id}`, course)
         return response
       } catch (e) {
         console.error(e)

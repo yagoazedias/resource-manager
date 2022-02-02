@@ -12,7 +12,6 @@ const deleteEvent = async (id) => {
             alert("Evento foi deletado com sucesso");
             window.location.reload();
         } else {
-            console.log(response)
             throw new Error("SQL error")
         }
     } catch (e) {
@@ -30,7 +29,6 @@ const Event = ({ event }) => (
 const Events = ({ events }) => (
     <Layout mt="25px">
         <Subtitle>Lista de eventos</Subtitle>
-        {console.log(events)}
         <ListGroup>
             {events.map(event => (
                 <Event event={event} key={event.id} />

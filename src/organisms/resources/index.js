@@ -10,7 +10,6 @@ const deleteResource = async (id) => {
             alert("Recurso foi deletado com sucesso");
             window.location.reload();
         } else {
-            console.log(response)
             throw new Error("SQL error")
         }
     } catch (e) {
