@@ -8,7 +8,7 @@ import {
   Route
 } from "react-router-dom";
 
-import { Home, Resources, Resource, Course, Evento } from './pages';
+import { Home, Resources, Resource, Course, Evento, CoursesPage } from './pages';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -17,6 +17,7 @@ ReactDOM.render(
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/recurso" element={<Resources />} />
+      <Route path="/curso" element={<CoursesPage />} />
       <Route path="/recurso/:id" element={<Resource />} />
       <Route path="/curso/:id" element={<Course />} />
       <Route path="/evento/:id" element={<Evento />} />
