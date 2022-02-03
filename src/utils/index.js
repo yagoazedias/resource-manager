@@ -14,6 +14,14 @@ class Util {
     }
 
     updateResourceByKey = (resource, key, value, setState) => {
+
+        if (key === "palavras_chaves") {
+            setState({
+                ...resource,
+                [key]: value.split,
+            })
+        }
+
         if (key === "data_de_criacao" 
             || key === "data_de_registro" 
             || key === "data_de_inicio" 

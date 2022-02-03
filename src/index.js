@@ -8,7 +8,19 @@ import {
   Route
 } from "react-router-dom";
 
-import { Home, Resources, Resource, Course, Evento, CoursesPage } from './pages';
+import { 
+  Home, 
+  Resources, 
+  Resource, 
+  Course, 
+  Evento, 
+  CoursesPage, 
+  EventsPage 
+} from 'pages';
+
+import { 
+  ResourceCreation
+} from 'forms';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -21,6 +33,8 @@ ReactDOM.render(
       <Route path="/recurso/:id" element={<Resource />} />
       <Route path="/curso/:id" element={<Course />} />
       <Route path="/evento/:id" element={<Evento />} />
+      <Route path="/evento/" element={<EventsPage />} />
+      <Route path="/criar/recurso" element={<ResourceCreation />} />
     </Routes>
   </BrowserRouter>,
   document.getElementById('root')

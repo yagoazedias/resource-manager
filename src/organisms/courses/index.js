@@ -22,7 +22,6 @@ const deleteCourse = async (id) => {
 
 const Course = ({ course }) => (
     <ListGroup.Item m="10px" maxWidth="400px">
-
         <Link to={`/curso/${course.id}`}>{course.titulo}</Link>
         <Button onClick={() => deleteCourse(course.id)} style={{marginLeft: "20px"}} variant="danger">Delete</Button>
     </ListGroup.Item>

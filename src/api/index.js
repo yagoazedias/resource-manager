@@ -7,6 +7,15 @@ class Api {
         this.port = port;
     }
 
+    async getAllCollections() {
+      try {
+          const response = await axios.get(`${this.host}:${this.port}/api/v1/colecao/`)
+          return response.data
+        } catch (e) {
+          console.error(e)
+        }
+    }
+
     async getAllResources() {
         try {
             const response = await axios.get(`${this.host}:${this.port}/api/v1/recurso`)
@@ -113,6 +122,16 @@ class Api {
       } catch (e) {
         console.error(e)
       }
+    }
+
+    async createResource(resource, colecaoId) {
+      try {
+          const response = await axios.post(`${this.host}:${this.port}/api/v1/recurso/colecao/${colecaoId}/`, resource)
+          console.log(response)
+          return response
+        } catch (e) {
+          console.error(e)
+        }
     }
 }
 
