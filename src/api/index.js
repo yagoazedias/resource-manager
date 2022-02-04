@@ -127,6 +127,15 @@ class Api {
     async createResource(resource, colecaoId) {
       try {
           const response = await axios.post(`${this.host}:${this.port}/api/v1/recurso/colecao/${colecaoId}/`, resource)
+          return response
+        } catch (e) {
+          console.error(e)
+        }
+    }
+
+    async createCourse(course) {
+      try {
+          const response = await axios.post(`${this.host}:${this.port}/api/v1/curso/`, course)
           console.log(response)
           return response
         } catch (e) {
