@@ -21,6 +21,7 @@ import {
 import { 
   ResourceCreation,
   CourseCreation,
+  EventCreation
 } from 'forms';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -37,6 +38,7 @@ ReactDOM.render(
       <Route path="/evento/" element={<EventsPage />} />
       <Route path="/criar/recurso" element={<ResourceCreation />} />
       <Route path="/criar/curso" element={<CourseCreation />} />
+      <Route path="/criar/evento" element={<EventCreation />} />
     </Routes>
   </BrowserRouter>,
   document.getElementById('root')

@@ -142,6 +142,16 @@ class Api {
           console.error(e)
         }
     }
+
+    async createEvent(event) {
+      try {
+          const response = await axios.post(`${this.host}:${this.port}/api/v1/evento/`, event)
+          console.log(response)
+          return response
+        } catch (e) {
+          console.error(e)
+        }
+    }
 }
 
 const API = new Api("http://localhost", "8080") 
